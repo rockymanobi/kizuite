@@ -8,6 +8,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string :create_user_name
       t.integer :capacity
       t.datetime :deadline
+      t.string :location
 
       t.timestamps
     end

@@ -1,57 +1,45 @@
-<h1>Listing events</h1>
+<h1>Events</h1>
 
-<table class="table table-hover">
-  <thead>
-  <tr>
-    <th>Title</th>
-    <th>To date</th>
-    <th>作成者</th>
-    <th>参加人数</th>
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
-
-<% @events.each do |event| %>
-  <tr>
-    <td><%= event.title %><br><%= event.description %></td>
-    <td><%= "#{mmdd( event.from_date )}" %>
-    <br><%= "#{hhmm( event.from_date )} ～ #{hhmm( event.to_date )}" %></td>
-    <td><%= event.create_user_name %></td>
-    <td><%= "#{event.attendances.count}人 / #{event.capacity}人" %></td>
-    <td><a href="<%= "#modal#{event.id}" %>" role="button" class="btn" data-toggle="modal">参加する</a>
-</td>
-<td>
-    <div class="btn-group">
-    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-    編集
-    <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu">
-      <li><%= link_to '編集', edit_event_path(event) %></li>
-      <li><%= link_to '削除', event, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-      <li class="divider"></li>
-      <li><%= link_to '詳細', event %></li>
-    <!-- dropdown menu links -->
-    </ul>
+<div class="row-fluid">
+  <div class="span3">
+    <div class="well-ex">
+      <p>基本ATNDですが、ログインあると使ってくれそうにないので名前入力方式にしました。テーブルレイアウトでごめんなさい。
+      </p>
+      <%= link_to '新規イベント作成', new_event_path, class: 'btn btn-block' %>
+      <%= link_to 'イベント検索', new_event_path, class: 'btn btn-block' %>
     </div>
-  </td>
+  </div>
+  <div class="span9">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th class="span5">内容</th>
+        <th class="span3">会場/日時</th>
+        <th>参加人数</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+
+    <% @events.each do |event| %>
+      <tr>
+        <td>
+          <%= link_to event do %>
+            <span id="event-title"><%= event.title %></span><br><%= truncate( event.description, length: 50) %>
+          <% end %>
+        </td>
+        <td><%= "#{mmdd_jp( event.from_date )} #{hhmm( event.from_date )}～#{hhmm( event.to_date )}" %><br>@<%= event.location %></td>
+        <td><%= "#{event.attendances.count} / #{event.capacity}人" %></td>
+      </tr>
 
 
-
-  </tr>
-
-  <!-- Button to trigger modal -->
-
-  <!-- Modal -->
-  <%= render 'attendances/modal_form', event: event, attendance: @attendance %>
-
-<% end %>
-</table>
+    <% end %>
+    </table>
+  </div>
+</div>
 
 <br />
 
-<%= link_to 'New Event', new_event_path %>
 
 
 

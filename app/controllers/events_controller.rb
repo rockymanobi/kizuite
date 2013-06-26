@@ -2,8 +2,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
-    @attendance = Attendance.new
+    @events = Event.order(:from_date).reverse_order
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +13,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @attendance = Attendance.new
     @event = Event.find(params[:id])
 
     respond_to do |format|
@@ -26,6 +26,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
+    @templates = Template.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +37,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    @templates = Template.all
   end
 
   # POST /events

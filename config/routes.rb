@@ -1,4 +1,7 @@
 Study::Application.routes.draw do
+  resources :templates
+
+
   resources :events do
   end
 

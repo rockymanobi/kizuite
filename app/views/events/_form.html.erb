@@ -1,4 +1,4 @@
-<%= form_for(@event) do |f| %>
+<%= form_for(@event, html:{ class: 'well'})  do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -12,34 +12,46 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :from_date %><br />
-    <%= f.datetime_select :from_date %>
-  </div>
-  <div class="field">
-    <%= f.label :to_date %><br />
-    <%= f.datetime_select :to_date %>
-  </div>
-  <div class="field">
-    <%= f.label :create_user_name %><br />
+    <%= f.label :create_user_name, '*作成者/主催者' %>
     <%= f.text_field :create_user_name %>
   </div>
   <div class="field">
-    <%= f.label :capacity %><br />
-    <%= f.number_field :capacity %>
+    <%= f.label :title, '*タイトル' %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field event-content">
+    <%= f.label :description, '*内容' %>
+    テンプレートから選択 : <%= collection_select :template, :name, @templates, :id, :name, include_blank: true %><br>
+    
+    <%= f.text_area :description, size: '5x5',class: 'span5' %>
   </div>
   <div class="field">
-    <%= f.label :deadline %><br />
-    <%= f.datetime_select :deadline %>
+    <%= f.label :from_date, '*開始日時' %>
+    <%= datetime_select_jp :event, :from_date,
+      { minute_step: 15} ,
+      { class: 'datetime-selector' }%>
+  </div>
+  <div class="field">
+    <%= f.label :to_date, '*終了日時' %>
+    <%= datetime_select_jp :event, :to_date,
+      {minute_step: 15} ,
+      { class: 'datetime-selector' }%>
+  </div>
+  <div class="field">
+    <%= f.label :location, '*会場' %>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :capacity, '募集人数' %>
+    <%= f.select :capacity, num_select_options( 1, 100 ) %>
+  </div>
+  <div class="field">
+    <%= f.label :deadline, '募集締切り' %>
+    <%= datetime_select_jp :event, :deadline,
+      {minute_step: 15, include_blank: true} ,
+      { class: 'datetime-selector' }%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit '登録', class: 'btn' %>
   </div>
 <% end %>

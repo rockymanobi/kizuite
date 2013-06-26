@@ -6,7 +6,7 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.new(params[:attendance])
 
     if @attendance.save
-      redirect_to :events
+      redirect_to event_path( @attendance.event_id )
     else
       # todo: error hundling
       error

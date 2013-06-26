@@ -1,18 +1,12 @@
-<body>
-
-
-</body>
-
-</html>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%= csrf_meta_tags %>
     <meta charset="utf-8">
-    <title>Kizukanai</title>
+    <title>Kizuite</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <%= csrf_meta_tags %>
 
     <!-- Le styles -->
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -101,18 +95,18 @@
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
-  <body>
+  <body class="all">
 
     <div class="container main">
 
       <div class="masthead">
-        <h3 class="muted">Kizuke</h3>
+        <h3 class="muted">Kizuite</h3>
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-                <li class="active"><%= link_to 'Home',new_session_path %></li>
-                <li><%= link_to 'Events',:events %></li>
+                <li <%= active_menu_selector( params[:controller], 'sessions') %>><%= link_to 'Home',new_session_path %></li>
+                <li <%= active_menu_selector( params[:controller], 'events') %>><%= link_to 'Events',:events %></li>
                 <li><a href="#">Conf. Rooms</a></li>
                 <li><a href="#">Boss Tracker</a></li>
                 <li><a href="#">About</a></li>

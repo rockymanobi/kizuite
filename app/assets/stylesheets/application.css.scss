@@ -15,12 +15,9 @@
 @import 'bootstrap-responsive';
 @import 'zurui-sass';
 
-input{
-}
-
 $bgcolor: $gray;
 
-body{
+body.all{
   background-color:  $grayLighter;
 }
 
@@ -30,13 +27,48 @@ body{
 }
 
 
-
-
-
-
 .jumbotron{
   h1{
     @include zurui-ts-000( .1 );
 
   }
+}
+
+.attendance-counter{
+  text-align: center;
+  p{
+  font-size: 30px;
+}
+}
+
+
+.single-attendance{
+  border-style: dotted;
+  border-width: 0px;
+  border-top-width: 1px;
+  border-color: $grayLight;
+  margin-bottom: 5px;
+
+}
+
+.hidden-object{
+  display: none;
+}
+
+#event-title{
+  font-weight: bold;
+}
+
+.well-ex{
+  @extend .well;
+  background-color: $white;
+}
+
+.btn-block-ex{
+  width: 100%;
+}
+
+.datetime-selector{
+  width: 100px;
+
 }
