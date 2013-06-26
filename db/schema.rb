@@ -26,15 +26,15 @@ ActiveRecord::Schema.define(:version => 20130626093812) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
-    t.string   "description"
+    t.string   "description",      :limit => 4000
     t.datetime "from_date"
     t.datetime "to_date"
     t.string   "create_user_name"
     t.integer  "capacity"
     t.datetime "deadline"
     t.string   "location"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "templates", :force => true do |t|
