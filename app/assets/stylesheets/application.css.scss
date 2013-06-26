@@ -76,7 +76,25 @@ body.all{
   width: 100px;
 
 }
+div.event-list-header{
+  @include zurui-line-bottom;
+}
 
+div.event-list{
+  padding: 10px 0px;
+  @include zurui-line-bottom;
+}
+
+a.event-list-link{
+  text-decoration: none;
+  color: $black;
+}
+a.event-list-link:hover{
+  text-decoration: none;
+}
+.help-content{
+  padding-left: 10px;
+}
 @media screen and (min-width: 757px){
       body {
         padding-top: 20px;
@@ -86,7 +104,25 @@ body.all{
     display: none;
   }
 }
+
 @media screen and (max-width: 756px){
+  .event-list{
+    .center{
+      border-top-width: 1px;
+      border-bottom-width: 1px;
+      border-top-style: dotted;
+      border-bottom-style: dotted;
+      border-color: $grayLighter;
+      float: left;
+    }
+    .left{
+      float: left;
+    }
+    .right{
+      float: left;
+    }
+
+  }
   div#myCarousel
   {
     display: none;

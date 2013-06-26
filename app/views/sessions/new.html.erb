@@ -6,41 +6,7 @@
   <a class="btn btn-large btn-success" href="#">Get started today</a>
 </div>
 -->
-    <div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="item active">
-          <%#= image_tag "rails.png", alt: "" %>
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Kizuite::Events</h1>
-              <p class="lead">勉強会やイベントが乱立しても大丈夫にしよう。ログイン面倒、でもイベント情報は検索したい。という要望に刺さるものが無かったので作りました。kizukiで出来たら良かったのですが</p>
-              <%= link_to "Try Now &raquo;".html_safe , :events, class: "btn btn-large btn-success" %>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <%#= image_tag "ails.png", alt: "" %>
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Kizuite::Conf. Room</h1>
-              <p class="lead">会議室の予約までのステップがかなり多い。</p>
-              <a class="btn btn-large btn-primary" href="#">Learn more</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>One more for good measure.</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <a class="btn btn-large btn-primary" href="#">Browse gallery</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-    </div><!-- /.carousel -->
+<%= render 'shared/carousel' %>
 
 <hr id="sessions-new-hr">
 
@@ -54,12 +20,12 @@
   <div class="span4">
     <h2>会議室予約</h2>
     <p>今会議室の予約にはkizukiを使っていますが、ちょっと大変じゃないですか？機能自体はkizukiと紐づいていなくて良いはずなので、使い勝手重視のものを作ろうかと思っています。面倒なので全然手をつけていませんが。</p>
-    <p><a class="btn" href="#">View details &raquo;</a></p>
+    <p><a class="btn" href="#" disabled>未実装 &raquo;</a></p>
  </div>
   <div class="span4">
     <h2>行動予定表</h2>
     <p>新人さん御用達のツールですね。少し不便なところもあるそうなので（しかもC++ベース) メンテ可能なものにリプレイスしてみましょう</p>
-    <p><a class="btn" href="#">View details &raquo;</a></p>
+    <p><a class="btn" href="#" disabled>未実装 &raquo;</a></p>
   </div>
 </div>
 <div class="row-fluid">
@@ -71,11 +37,11 @@
   <div class="span4">
     <h2>ユーザ認証</h2>
     <p>前述のとおり、イベント管理以外の情報を、ってことになるとログインとかが必要になりますよね。ログイン必須で縛るのもいいのですけど、ログイン必須だと面倒だったりするのである程度はログインせずともOKみたいにできたら良いですね。あとはユーザ作るなら任意でグループが作れた方がいいですよね。</p>
-    <p><a class="btn" href="#">View details &raquo;</a></p>
+    <p><a class="btn" href="#" disabled>未実装 &raquo;</a></p>
  </div>
   <div class="span4">
     <h2>Wiki</h2>
     <p>を実装するのは非常に面倒なので</p>
-    <p><a class="btn" href="#">View details &raquo;</a></p>
+    <p><a class="btn" href="#" disabled>未実装 &raquo;</a></p>
   </div>
 </div>

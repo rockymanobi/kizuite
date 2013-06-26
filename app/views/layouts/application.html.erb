@@ -159,7 +159,7 @@
                 <li><a href="#">Conf. Rooms</a></li>
                 <li><a href="#">Boss Tracker</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li <%= active_menu_selector( params[:controller], 'helps') %>><%= link_to 'Help',:helps %></li>
               </ul>
             </div>
           </div>
@@ -180,9 +180,9 @@
               <a class="brand" href="#">Kizuite</a>
               <div class="nav-collapse collapse">
                 <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#contact">Contact</a></li>
+                  <li <%= active_menu_selector( params[:controller], 'sessions') %>><%= link_to 'Home',new_session_path %></li>
+                  <li <%= active_menu_selector( params[:controller], 'events') %>><%= link_to 'Events',:events %></li>
+                  <li <%= active_menu_selector( params[:controller], 'helps') %>><%= link_to 'Help',:helps %></li>
                   <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -208,6 +208,9 @@
       </div>
 
       <!-- Jumbotron -->
+      <% if notice %>
+<div class="alert"><%= notice %></div>
+      <% end %>
 
 <%= yield %>
       <hr>

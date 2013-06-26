@@ -1,19 +1,24 @@
-<p id="notice"><%= notice %></p>
 <h1>Events</h1>
 <div class="row-fluid">
   <div class="span3">
     <div class="well-ex">
-      <a href="<%= "#modal#{@event.id}" %>" role="button" class="btn btn-block" data-toggle="modal">参加する</a>
-      <h4>参加者</h4>
-      <div class="attendance-counter">
-        <p><%= "#{@event.attendances.count} / #{@event.capacity}人" %></p>
-      </div>
-      <% @event.attendances.each do |attendance| %>
-        <div class="single-attendance">
-          <b><%= attendance.name %>:</b><%= attendance.comment %>
-          <br>
-        <%= link_to '参加取消', '#' %>
+      <% if @event.looking_attendances? %>
+        <a href="<%= "#modal#{@event.id}" %>" role="button" class="btn btn-block" data-toggle="modal">参加する</a>
+        <h4>参加者</h4>
+        <div class="attendance-counter">
+          <p><%= "#{@event.attendances.count} / #{@event.capacity}人" %></p>
         </div>
+        <% @event.attendances.each do |attendance| %>
+          <div class="single-attendance">
+            <b><%= attendance.name %>:</b><%= attendance.comment %>
+            <br>
+            <%= link_to '参加取消', attendance, method: :delete, data: {confirm: 'Are you sure?' } %>
+
+          </div>
+        <% end %>
+      <% else %>
+        <h4>周知のみ！</h4>
+        <p>参加者募集はしてないよ。参加を希望する人は主催者に連絡しよう。連絡先が「内容」に書いてあるかもしれない</p>
       <% end %>
       <hr>
       <h4>作成者用</h4>
