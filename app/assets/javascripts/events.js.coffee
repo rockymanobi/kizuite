@@ -21,4 +21,5 @@ $ ->
 
     .fail (data) ->
       alert 'NG'
+
       

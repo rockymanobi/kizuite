@@ -8,8 +8,7 @@ class AttendancesController < ApplicationController
     if @attendance.save
       redirect_to event_path( @attendance.event_id )
     else
-      # todo: error hundling
-      error
+      redirect_to event_path( @attendance.event_id ) 
     end
 
   end
@@ -33,8 +32,8 @@ class AttendancesController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
+    @attendance = Attendance.find(params[:id])
+    @attendance.destroy
 
     respond_to do |format|
       format.html { redirect_to events_url }

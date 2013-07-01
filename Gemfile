@@ -10,6 +10,7 @@ group :production do
 end
 
 gem 'factory_girl_rails'
+gem 'acts-as-taggable-on'
 
 group :test, :development do
   gem 'sqlite3'

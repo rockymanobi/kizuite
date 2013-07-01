@@ -1,0 +1,35 @@
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <%#= image_tag "rails.png", alt: "" %>
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Kizuite::Events</h1>
+          <p class="lead">勉強会やイベントが乱立しても大丈夫にしよう。ログイン面倒、でもイベント情報は検索したい。という要望に刺さるものが無かったので作りました。kizukiで出来たら良かったのですが</p>
+          <%= link_to "Try Now &raquo;".html_safe , :events, class: "btn btn-large btn-success" %>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <%#= image_tag "ails.png", alt: "" %>
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Kizuite::Conf. Room</h1>
+          <p class="lead">kizukiでの会議室の予約は結構面倒。画面に行き着くまでにIEを起動しなければならないのは何かと不便。切り出せないでしょうか。</p>
+          <a class="btn btn-large btn-danger" href="#" disabled>未実装</a>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Kizuite::Mobile</h1>
+          <p class="lead">なんちゃってレスポンシブ</p>
+          <a class="btn btn-large btn-primary" href="#">Browse gallery</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div><!-- /.carousel -->

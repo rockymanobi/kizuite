@@ -1,6 +1,7 @@
 Study::Application.routes.draw do
-  resources :templates
-
+  root :to => 'sessions#new'
+  resources :templates do
+  end
 
   resources :events do
   end
@@ -8,10 +9,10 @@ Study::Application.routes.draw do
   resources :sessions, only: [:new] do
   end
 
-  root :to => 'sessions#new'
+  resources :attendances, only: [:create, :destroy] do
+  end
 
-
-  resources :attendances, only: [:create] do
+  resources :helps, only: [:index] do
   end
 
   # The priority is based upon order of creation:

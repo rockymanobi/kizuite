@@ -3,38 +3,46 @@
 <div class="row-fluid">
   <div class="span3">
     <div class="well-ex">
-      <p>基本ATNDですが、ログインあると使ってくれそうにないので名前入力方式にしました。テーブルレイアウトでごめんなさい。
-      </p>
+      <p>基本ATNDですが、ログインあると使ってくれそうにないので名前入力方式にしました。tag機能、タグクラウド生成くらいまではサポートしようか</p>
       <%= link_to '新規イベント作成', new_event_path, class: 'btn btn-block' %>
-      <%= link_to 'イベント検索', new_event_path, class: 'btn btn-block' %>
+      <%= link_to 'イベント検索', '#', class: 'btn btn-block' , disabled: true %>
     </div>
   </div>
   <div class="span9">
-    <table class="table table-hover">
-      <thead>
-      <tr>
-        <th class="span5">内容</th>
-        <th class="span3">会場/日時</th>
-        <th>参加人数</th>
-        <th></th>
-        <th></th>
-      </tr>
-      </thead>
 
+    <div class="row-fluid event-list-header">
+      <div class="span6 left">
+        <b>内容</b>
+      </div>
+      <div class="span3 center">
+        <b>日時/会場</b>
+      </div>
+      <div class="span3 right">
+        <b>参加者</b>
+      </div>
+    </div>
     <% @events.each do |event| %>
-      <tr>
-        <td>
-          <%= link_to event do %>
-            <span id="event-title"><%= event.title %></span><br><%= truncate( event.description, length: 50) %>
-          <% end %>
-        </td>
-        <td><%= "#{mmdd_jp( event.from_date )} #{hhmm( event.from_date )}～#{hhmm( event.to_date )}" %><br>@<%= event.location %></td>
-        <td><%= "#{event.attendances.count} / #{event.capacity}人" %></td>
-      </tr>
+      <%= link_to event, class: 'event-list-link' do %>
+        <div class="row-fluid event-list">
+          <div class="span6 left">
+            <h4><%= event.title %></h4><%= truncate( event.description, length: 50) %>
+          </div>
+          <div class="span3 center">
+            <%= "#{mmdd_jp( event.from_date )} #{hhmm( event.from_date )}～#{hhmm( event.to_date )}" %><br>@<%= event.location %>
+          </div>
+          <div class="span3 right">
+            <% if event.looking_attendances? %>
+              <%= "#{event.attendances.count}" %> / <%= "#{event.capacity}人" %>
+            <% else %>
+              周知専用
+            <% end %>
 
-
+          </div>
+        </div>
+      <% end %>
     <% end %>
-    </table>
+
+
   </div>
 </div>
 
