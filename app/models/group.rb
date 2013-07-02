@@ -6,7 +6,7 @@ class Group < ActiveRecord::Base
   class << self
 
     def authenticate(login_id, password)
-      group = find_by_email(login_id)
+      group = find_by_login_id(login_id)
       # TODO: RUBYぽく
       if group.present? && 
         BCrypt::Password.new(group.password_digest) == password

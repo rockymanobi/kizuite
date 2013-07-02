@@ -8,6 +8,8 @@ Study::Application.routes.draw do
 
   resources :sessions, only: [:new] do
   end
+  resource :session, only: [:create, :destroy] do
+  end
 
   resources :attendances, only: [:create, :destroy] do
   end

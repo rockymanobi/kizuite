@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
     if session[:group_id]
       @current_group = Group.find_by_id(session[:group_id])
       if @current_group
-        @current_want ||= Want.includes(:station).of( @current_group ).available.includes(:genres).first
       else
         session.delete(:group_id)
       end
