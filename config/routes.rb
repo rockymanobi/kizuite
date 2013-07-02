@@ -1,5 +1,5 @@
 Study::Application.routes.draw do
-  root :to => 'sessions#new'
+  root :to => 'home#index'
   resources :templates do
   end
 

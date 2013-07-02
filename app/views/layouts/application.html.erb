@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Kizuite</title>
+    <title>Kizuite β</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -149,23 +149,16 @@
     <div class="container main">
 
       <div class="masthead" id="large-header" >
-        <h3 class="muted">Kizuite</h3>
-<%= form_tag :session do %>
-<%= label_tag :session, "Login ID" %>
-<%= text_field_tag "login_id", ""  %>
-<%= label_tag :session, "パスワード" %>
-<%= password_field_tag "password"  %>
-<%= submit_tag "ログイン" , class: "btn btn-block" %></td>
-<% end %>
+        <h3 class="muted">Kizuite β</h3>
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-                <li <%= active_menu_selector( params[:controller], 'sessions') %>><%= link_to 'Home',new_session_path %></li>
+                <li <%= active_menu_selector( params[:controller], 'home') %>><%= link_to 'Home',:root %></li>
                 <li <%= active_menu_selector( params[:controller], 'events') %>><%= link_to 'Events',:events %></li>
-                <li><a href="#">Conf. Rooms</a></li>
-                <li><a href="#">Boss Tracker</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#"><del>Toilet</del></a></li>
+                <li><a href="#"><del>Boss Tracker</a></del></li>
+                <li><a href="#"><del>Kizuitter</del></a></li>
                 <li <%= active_menu_selector( params[:controller], 'helps') %>><%= link_to 'Help',:helps %></li>
               </ul>
             </div>
@@ -184,12 +177,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="brand" href="#">Kizuite</a>
+              <a class="brand" href="#">Kizuite β</a>
               <div class="nav-collapse collapse">
                 <ul class="nav">
-                  <li <%= active_menu_selector( params[:controller], 'sessions') %>><%= link_to 'Home',new_session_path %></li>
+                  <li <%= active_menu_selector( params[:controller], 'home') %>><%= link_to 'Home', :root %></li>
                   <li <%= active_menu_selector( params[:controller], 'events') %>><%= link_to 'Events',:events %></li>
                   <li <%= active_menu_selector( params[:controller], 'helps') %>><%= link_to 'Help',:helps %></li>
+                  <!--
                   <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -202,12 +196,17 @@
                     <li><a href="#">One more separated link</a></li>
                   </ul>
                   </li>
+                  -->
                 </ul>
-                <form class="navbar-form pull-right">
-                  <input class="span2" type="text" placeholder="Email">
-                  <input class="span2" type="password" placeholder="Password">
-                  <button type="submit" class="btn">Sign in</button>
-                </form>
+                <% if @current_group.nil? %>
+                  <%= form_tag :session, class: 'navbar-form pull-right' do %>
+                  <%= text_field_tag "login_id", "", class: 'span2', placeholder: 'login_id' %>
+                  <%= password_field_tag "password","",  class: 'span2', placeholder: 'password' %>
+                  <%= submit_tag "ログイン" , class: "btn btn-block" %>
+                  <% end %>
+                <% else %>
+                  <%= link_to "ログアウト", :session, method: :delete, confirm: "ログアウトしますか？", class: 'btn btn-block btn-small' %>
+                <% end %>
               </div><!--/.nav-collapse -->
             </div>
           </div>
