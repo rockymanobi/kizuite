@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+g = Group.new
+g.login_id = 'kizuki'
+g.password = 'asl48'
+g.save
