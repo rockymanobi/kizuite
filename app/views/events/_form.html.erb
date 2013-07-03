@@ -13,7 +13,7 @@
     <%= f.label :description, '*内容' %>
     テンプレートから選択 : <%= collection_select :template, :name, @templates, :id, :name, include_blank: true %><br>
     
-    <%= f.text_area :description, size: '5x5',class: 'span5' %>
+    <%= f.text_area :description, size: '5x10',class: 'span6' %>
   </div>
   <div class="field">
     <%= f.label :from_date, '*開始日時' %>
