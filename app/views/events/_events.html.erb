@@ -1,0 +1,21 @@
+
+<% events.each do |event| %>
+  <%= link_to event, class: 'event-list-link' do %>
+    <div class="row-fluid event-list">
+      <div class="span6 left">
+        <h4><%= event.title %></h4><%= truncate( event.description, length: 50) %>
+      </div>
+      <div class="span3 center">
+        <%= "#{mmdd_jp( event.from_date )}(#{event.from_date.wday_jp})" %><br><%= "#{hhmm( event.from_date )}～#{hhmm( event.to_date )}" %><br>@<%= event.location %>
+      </div>
+      <div class="span3 right">
+        <% if event.looking_attendances? %>
+          <%= "#{event.attendances.count}" %> / <%= "#{event.capacity}人" %>
+        <% else %>
+          周知専用
+        <% end %>
+
+      </div>
+    </div>
+  <% end %>
+<% end %>
