@@ -7,6 +7,9 @@
       <%= link_to '新規イベント作成', new_event_path, class: 'btn btn-block' %>
       <%= link_to 'イベント検索', '#', class: 'btn btn-block' , disabled: true %>
     </div>
+    <div class="well-ex">
+      <%= render 'calendar_unit', events: @events %>
+    </div>
   </div>
   <div class="span9">
     <div class="row-fluid event-list-header">

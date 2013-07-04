@@ -1,0 +1,31 @@
+
+
+
+<ul class="calendars">
+  <li>
+    <h4><%= Time.now.month %>月</h4>
+    <ul class="calendar">
+      <% Time.now.beginning_of_month.wday.times do |n| %>
+        <li>-</li>
+      <% end %>
+
+      <% Time.now.beginning_of_month.to_date.upto( Time.now.at_end_of_month.to_date) do |d| %>
+        <%= "<li class=""#{has_event_class(events, d )} day#{d.wday} "">#{d.day}</li>".html_safe %>
+      <% end %>
+    </ul>
+  </li>
+
+  <li>
+    <h4><%= 1.month.from_now.month %>月</h4>
+    <ul class="calendar">
+      <% 1.month.from_now.beginning_of_month.wday.times do |n| %>
+        <li>-</li>
+      <% end %>
+
+      <% 1.month.from_now.beginning_of_month.to_date.upto( 1.month.from_now.at_end_of_month.to_date) do |d| %>
+        <%= "<li class=""day#{d.wday}"">#{d.day}</li>".html_safe %>
+      <% end %>
+    </ul>
+  </li>
+
+</ul>

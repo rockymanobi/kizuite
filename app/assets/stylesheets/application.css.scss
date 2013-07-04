@@ -17,10 +17,55 @@
 
 $bgcolor: $gray;
 
+$sundayColor: #ffcccc;
+$saturdayColor: #ccccff;
+$eventExistsColor: #ffff00;
+
 body.all{
   background-color:  $grayLighter;
 }
 
+ul.calendars{
+  list-style: none;
+  margin: 0px;
+
+}
+
+ul.calendar{
+  width: 100%;
+  list-style: none;
+  margin:0px;
+  overflow: hidden;
+
+
+  li{
+    float: left;
+    border-style: solid;
+    border-width :1px;
+    border-color: $grayLight;
+    margin: 0px;
+    padding: 0px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    width: 12%;
+    font-size: 10px;
+    height: 20px;
+    text-align: center;
+  }
+
+  li.day0{
+    background-color: $sundayColor;
+  }
+  li.day6{
+    background-color: $saturdayColor;
+  }
+  li.has_event{
+    background-color: $eventExistsColor;
+  
+  }
+
+  
+}
 #sessions-new-hr{
   margin: 10px 0px;
 }
