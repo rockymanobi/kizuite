@@ -1,7 +1,9 @@
 #coding: utf-8
 class Event < ActiveRecord::Base
   has_many :attendances
-  attr_accessible :location, :capacity, :create_user_name, :deadline, :description, :from_date, :title, :to_date
+  attr_accessible :location, :capacity, :create_user_name,
+    :deadline, :description, :from_date, :title, :to_date,
+    :draft
 
   acts_as_taggable
   acts_as_taggable_on :free_tags
@@ -12,6 +14,8 @@ class Event < ActiveRecord::Base
   validates :from_date, presence: true
   validates :to_date, presence: true
   validates :location, presence: true
+
+  scope :published, ->{ where( draft: 0 ) }
 
   validate do
     unless self.from_date < self.to_date

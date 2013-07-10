@@ -41,7 +41,15 @@
       {minute_step: 15, include_blank: true} ,
       { class: 'datetime-selector' }%>
   </div>
+
+
   <div class="actions">
     <%= f.submit '登録', class: 'btn' %>
+  </div>
+  <hr>
+  <div class="field">
+    <label class="checkbox">
+      <%= f.check_box :draft %>下書きとして一時保存：次の画面のURL覚えておかないとまずいよ。いまのところ興梠しか使う想定なし
+    </label>
   </div>
 <% end %>

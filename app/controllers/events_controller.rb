@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.order(:from_date).reverse_order
+    @events = Event.published.order(:from_date).reverse_order
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,6 +28,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
+    @event.draft = 0
     @templates = Template.all
 
     respond_to do |format|
