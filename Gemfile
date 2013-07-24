@@ -23,9 +23,7 @@ group :test, :development do
   gem 'rb-fsevent'
   gem 'guard-spork'
   gem 'guard-rspec'
-  gem 'growl' if /darwin/ =~ RUBY_PLATFORM
-  gem 'libnotify' if /linux/ =~ RUBY_PLATFORM
-  gem 'rb-inotify' if /linux/ =~ RUBY_PLATFORM
+  gem 'growl'
 end
 
 
